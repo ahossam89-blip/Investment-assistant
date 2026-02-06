@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Notification Center | Capital Egypt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        @layer components {
+            .notification-card {
+                @apply relative flex items-start gap-4 p-5 bg-white dark:bg-[#1a1f26] border border-slate-200 dark:border-slate-800 rounded-xl hover:shadow-lg transition-all;
+            }
+            .urgency-high {
+                @apply border-l-4 border-l-rose-500 shadow-rose-500/5;
+            }
+            .urgency-medium {
+                @apply border-l-4 border-l-amber-500 shadow-amber-500/5;
+            }
+            .urgency-low {
+                @apply border-l-4 border-l-emerald-500 shadow-emerald-500/5;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#111418] flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined filled-icon">analytics</span>
+</div>
+<div>
+<h1 class="text-sm font-bold leading-none text-slate-900 dark:text-white">Capital Egypt</h1>
+<p class="text-xs text-slate-500 mt-1">Institutional Pro</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-sm font-medium">Market Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary dark:bg-primary/20 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined filled-icon">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-medium">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuokYhMzpDRUTmICvzUqVBVbu-sda7_ZVJBLtwmdX1YUM5yESxYqEHTLTAEGGimHS-1rkwnWf086aXRZ3SL4dVapt_FPHKw4-X_B-Le_A0HN8Dpn9EIT4jVfNC69AJWLwQywig6_TWFNsDxIO3un4TJh6Wnyf2cu-cdad-E7T7_jyiF34vKyRPB-cQSZYB8b5PEwCU_iANdzy8wwtGEvRgrxkY2xB1Y_7U1Ng6fp2K7WWMWWsUliVKUL_kp-gEbi0fZP37DkcN1QBl"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Ahmed Mansour</p>
+<p class="text-[10px] text-slate-500">Premium Plan</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">logout</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark overflow-y-auto">
+<header class="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#111418]/80 backdrop-blur-md px-8 py-4">
+<div class="flex items-center gap-4 flex-1">
+<h2 class="text-lg font-bold">Conditional AI Advisor</h2>
+<div class="relative w-full max-w-md ml-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 transition-all outline-none" placeholder="Search advisory logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full border border-green-500/20">
+<span class="size-2 bg-green-500 rounded-full animate-pulse"></span>
+<span class="text-xs font-bold">EGX30: +1.24%</span>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+</header>
+<div class="p-8 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="text-3xl font-black tracking-tight">Smart Notifications</h3>
+<p class="text-slate-500 dark:text-slate-400">Contextual conditional recommendations based on market triggers.</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-lg text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-sm">delete_sweep</span>
+                            Clear History
+                        </button>
+</div>
+<div class="flex border-b border-slate-200 dark:border-slate-800 gap-8">
+<a class="border-b-2 border-primary text-primary pb-3 text-sm font-bold" href="#">All Advisory</a>
+<a class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 pb-3 text-sm font-bold" href="#">Portfolio Matches</a>
+<a class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 pb-3 text-sm font-bold" href="#">High Probability</a>
+</div>
+<div class="space-y-4">
+<div class="notification-card urgency-high">
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center border border-rose-500/20">
+<span class="material-symbols-outlined filled-icon">warning</span>
+</div>
+<span class="text-[10px] font-bold text-rose-500 uppercase tracking-widest">CRITICAL</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-base font-bold text-slate-900 dark:text-white">Macro Risk Trigger</h4>
+<span class="text-xs text-slate-400">Just Now</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 mb-4 text-sm leading-relaxed">
+                                    We advise <span class="font-black text-slate-900 dark:text-white">CIB</span> <span class="text-rose-500 font-bold">Buy More</span>
+<span class="block mt-1 p-2 bg-slate-100 dark:bg-slate-900/50 rounded-lg italic text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+                                        (If Suez disruption ends: <span class="text-rose-500 font-bold">75% probability</span>)
+                                    </span>
+</p>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                                        Adjust Portfolio
+                                    </button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">Analyze Macro</button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Certainty</span>
+<div class="w-16 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full w-[75%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notification-card urgency-medium">
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-full bg-amber-500/10 text-amber-500 flex items-center justify-center border border-amber-500/20">
+<span class="material-symbols-outlined filled-icon">currency_bitcoin</span>
+</div>
+<span class="text-[10px] font-bold text-amber-500 uppercase tracking-widest">VOLATILE</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-base font-bold text-slate-900 dark:text-white">Regulatory Pulse</h4>
+<span class="text-xs text-slate-400">14m ago</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 mb-4 text-sm leading-relaxed">
+                                    We advise <span class="font-black text-slate-900 dark:text-white">Bitcoin</span> <span class="text-amber-500 font-bold">Sell</span>
+<span class="block mt-1 p-2 bg-slate-100 dark:bg-slate-900/50 rounded-lg italic text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+                                        (If US Regulation passes: <span class="text-amber-600 font-bold">62% probability</span>)
+                                    </span>
+</p>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                                        Adjust Portfolio
+                                    </button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">Regulatory Docs</button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Certainty</span>
+<div class="w-16 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[62%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notification-card urgency-low">
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center border border-emerald-500/20">
+<span class="material-symbols-outlined filled-icon">trending_up</span>
+</div>
+<span class="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">GROWTH</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-base font-bold text-slate-900 dark:text-white">Sector Rotation</h4>
+<span class="text-xs text-slate-400">2h ago</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 mb-4 text-sm leading-relaxed">
+                                    We advise <span class="font-black text-slate-900 dark:text-white">EAST.CA</span> <span class="text-emerald-600 font-bold">Accumulate</span>
+<span class="block mt-1 p-2 bg-slate-100 dark:bg-slate-900/50 rounded-lg italic text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+                                        (If CBE holds interest rates: <span class="text-emerald-600 font-bold">54% probability</span>)
+                                    </span>
+</p>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                                        Adjust Portfolio
+                                    </button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Certainty</span>
+<div class="w-16 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[54%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="p-6 bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-xl sticky top-24">
+<h4 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">tune</span>
+                            Advisory Engine
+                        </h4>
+<div class="space-y-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<p class="text-sm font-bold">Risk Appetite</p>
+<p class="text-[11px] text-slate-500">Affects [Action] intensity</p>
+</div>
+<label class="relative flex h-[28px] w-[48px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-800 p-1 has-[:checked]:bg-primary transition-colors">
+<div class="h-5 w-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-5"></div>
+<input checked="" class="hidden peer" type="checkbox"/>
+</label>
+</div>
+<div class="px-2">
+<input class="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="1" type="range" value="85"/>
+<div class="flex justify-between mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-tighter">
+<span>Safe</span>
+<span>Aggressive</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<p class="text-sm font-bold">Min Probability</p>
+<p class="text-[11px] text-slate-500">Ignore signals &lt; X%</p>
+</div>
+<span class="text-sm font-black text-primary px-2 py-1 bg-primary/10 rounded">50%</span>
+</div>
+<div class="px-2">
+<input class="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="1" type="range" value="50"/>
+<div class="flex justify-between mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-tighter">
+<span>All Signals</span>
+<span>High Conviction</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Trigger Filters</p>
+<div class="flex items-center justify-between group">
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Macro Disruptions</span>
+<input checked="" class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary/20 bg-transparent" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between group">
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Regulatory Changes</span>
+<input checked="" class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary/20 bg-transparent" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between group">
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Monetary Policy</span>
+<input checked="" class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary/20 bg-transparent" type="checkbox"/>
+</div>
+</div>
+<button class="w-full py-3 bg-primary/10 text-primary hover:bg-primary/20 font-bold text-sm rounded-lg transition-all mt-4">
+                                Update Algorithm
+                            </button>
+</div>
+</div>
+<div class="p-6 bg-primary rounded-xl text-white overflow-hidden relative">
+<div class="relative z-10">
+<h5 class="font-bold text-sm mb-2 opacity-80">Portfolio Health</h5>
+<p class="text-2xl font-black mb-4">Exposure: 64%</p>
+<p class="text-xs leading-relaxed opacity-90 mb-6">3 pending advisories match your current holdings. Adjust positions to optimize for upcoming conditional triggers.</p>
+<button class="w-full py-2 bg-white text-primary font-bold text-xs rounded-lg shadow-lg">Batch Adjust All</button>
+</div>
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="h-full w-full" fill="currentColor" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M0 100 L20 80 L40 90 L60 40 L80 60 L100 20 L100 100 Z"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

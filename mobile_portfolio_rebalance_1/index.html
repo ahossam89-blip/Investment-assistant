@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Anonymous Portfolio Rebalance - Fintech AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181611",
+                        "card-dark": "#27241b",
+                        "accent-green": "#0bda1d",
+                        "accent-red": "#ff4d4d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #181611;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #393528;
+            border-radius: 10px;
+        }
+        .donut-gradient {
+            background: conic-gradient(
+                #f2b90d 0% 35%, 
+                #3b82f6 35% 65%, 
+                #a855f7 65% 85%, 
+                #ffffff 85% 100%
+            );
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<header class="flex items-center justify-between border-b border-solid border-[#393528] px-6 py-4 bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">Fintech AI</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-[#393528] rounded-full">
+<span class="size-2 rounded-full bg-accent-green animate-pulse"></span>
+<span class="text-[10px] font-bold text-[#bab29c] uppercase tracking-widest leading-none">Market Live</span>
+</div>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#393528] text-white">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center">
+<div class="w-full max-w-[480px] px-4 py-6 flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div>
+<h1 class="text-white text-3xl font-black leading-tight tracking-tight uppercase italic">Rebalance</h1>
+<p class="text-[#bab29c] text-sm font-normal">System ID: 8842-AX (Anonymous Mode)</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-widest">Active Strategy</span>
+<div class="flex items-center gap-1 text-accent-green text-sm font-bold">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                                84% Optimization
+                            </div>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-xl p-6 border border-[#393528] flex flex-col items-center">
+<div class="flex justify-between w-full mb-6">
+<p class="text-white text-base font-medium">Asset Allocation</p>
+<span class="text-[#bab29c] text-xs font-mono uppercase">Portfolio Beta: 1.12</span>
+</div>
+<div class="relative flex items-center justify-center w-56 h-56 mb-6">
+<div class="absolute inset-0 rounded-full donut-gradient opacity-20"></div>
+<div class="absolute inset-4 rounded-full donut-gradient border-4 border-background-dark shadow-xl"></div>
+<div class="absolute inset-12 rounded-full bg-background-dark flex flex-col items-center justify-center text-center">
+<p class="text-[#bab29c] text-[10px] font-bold uppercase tracking-widest">Current State</p>
+<p class="text-white text-xl font-black">100.00%</p>
+<p class="text-accent-green text-xs font-bold">+2.4% Δ 24h</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#f2b90d]"></span>
+<span class="text-[#bab29c] text-xs font-mono font-medium">XAU/EGP (35%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#3b82f6]"></span>
+<span class="text-[#bab29c] text-xs font-mono font-medium">EGX30 (30%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#a855f7]"></span>
+<span class="text-[#bab29c] text-xs font-mono font-medium">USD/EGP (20%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-white"></span>
+<span class="text-[#bab29c] text-xs font-mono font-medium">BTC/USD (15%)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<h2 class="text-white text-xl font-bold">Execution Steps</h2>
+<span class="text-primary text-sm font-medium cursor-pointer">Macro View</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-3 rounded-xl bg-card-dark p-4 border-l-4 border-accent-red shadow-lg">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<p class="text-white text-base font-bold leading-tight font-mono">REDUCE: CIB</p>
+<p class="text-[#bab29c] text-sm">Target Weight Δ: -5.2%</p>
+</div>
+<div class="bg-accent-red/10 text-accent-red px-2 py-1 rounded text-[10px] font-black tracking-tighter uppercase">Signal: Sell</div>
+</div>
+<div class="bg-background-dark/50 rounded-lg p-3 border border-[#393528]">
+<div class="flex items-center justify-between mb-2">
+<span class="text-primary text-[10px] font-bold flex items-center gap-1 uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">analytics</span> Analysis
+                                </span>
+<span class="material-symbols-outlined text-[#bab29c] text-sm">info</span>
+</div>
+<p class="text-[#bab29c] text-xs leading-relaxed">
+                                AI detects liquidity variance in local banking sector. Macro indicator suggests rotation into hedge assets due to CBE policy shifts.
+                            </p>
+</div>
+<div class="flex gap-2 mt-1">
+<button class="flex-1 h-9 rounded-lg bg-[#393528] text-white text-xs font-bold flex items-center justify-center gap-2 uppercase">
+                                Chart
+                            </button>
+<button class="flex-1 h-9 rounded-lg bg-primary text-background-dark text-xs font-bold flex items-center justify-center gap-2 uppercase">
+                                Queue Order
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-card-dark p-4 border-l-4 border-accent-green shadow-lg">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<p class="text-white text-base font-bold leading-tight font-mono">INCREASE: USD/EGP Hedge</p>
+<p class="text-[#bab29c] text-sm">Target Weight Δ: +12.0%</p>
+</div>
+<div class="bg-accent-green/10 text-accent-green px-2 py-1 rounded text-[10px] font-black tracking-tighter uppercase">Signal: Buy</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-[#393528] px-2 py-1 rounded text-[10px] text-white font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">code</span> TRIGGER: USD/EGP &gt; 50.5
+                            </span>
+</div>
+<div class="flex gap-2 mt-1">
+<button class="w-full h-9 rounded-lg bg-primary/10 border border-primary/30 text-primary text-xs font-bold flex items-center justify-center gap-2 uppercase">
+                                Logic Rationale
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-card-dark p-4 border-l-4 border-[#3b82f6] shadow-lg opacity-90">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<p class="text-white text-base font-bold leading-tight font-mono">HOLD: XAU (Gold)</p>
+<p class="text-[#bab29c] text-sm">Maintain Current: 35%</p>
+</div>
+<div class="bg-[#3b82f6]/10 text-[#3b82f6] px-2 py-1 rounded text-[10px] font-black tracking-tighter uppercase">Neutral</div>
+</div>
+</div>
+</div>
+<div class="h-28"></div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 flex justify-center p-4 bg-background-dark/80 backdrop-blur-md border-t border-[#393528]">
+<div class="w-full max-w-[480px] flex flex-col gap-3">
+<div class="flex justify-between items-center px-1">
+<div class="flex flex-col">
+<span class="text-[#bab29c] text-[10px] uppercase font-bold tracking-widest leading-none">Net Change</span>
+<span class="text-white text-xs font-mono font-bold">+17.2% Vol. Transacted</span>
+</div>
+<div class="text-right flex flex-col">
+<span class="text-[#bab29c] text-[10px] uppercase font-bold tracking-widest leading-none">Fees</span>
+<span class="text-white text-xs font-mono font-bold">~0.2% Slippage Est.</span>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-background-dark rounded-xl font-black text-lg shadow-[0_0_20px_rgba(242,185,13,0.3)] flex items-center justify-center gap-3 active:scale-95 transition-transform">
+<span class="material-symbols-outlined font-black">rocket_launch</span>
+                    EXECUTE ALL CHANGES
+                </button>
+</div>
+</footer>
+</div>
+
+</body></html>
