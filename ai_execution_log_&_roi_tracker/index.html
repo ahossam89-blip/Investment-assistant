@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Execution Log &amp; ROI Tracker | InvestAI Egypt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0f172a",
+                        "surface-dark": "#1e293b",
+                        "border-dark": "#334155",
+                        "success": "#22c55e",
+                        "danger": "#ef4444"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .chart-gradient { fill: url(#chart-grad); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="border-b border-slate-200 dark:border-border-dark bg-white dark:bg-background-dark px-6 py-3 sticky top-0 z-50">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">insights</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">InvestAI Egypt</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Market Analysis</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary pb-4 -mb-4" href="#">Execution Log</a>
+<a class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-slate-100 dark:bg-surface-dark border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search assets..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-surface-dark rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-danger rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="size-9 rounded-full bg-slate-300 dark:bg-surface-dark overflow-hidden border border-slate-200 dark:border-border-dark">
+<img alt="User Avatar" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzadwC8LHH12ECxms52LluMY95aQ0f6UWRYdHFBkoGidhvjrfILj-X83kmisrpacxf0rTa0UK_SCoy5WybMMKULcECkhZnh-FOeyJDOsRy_WGLTz49Lf0h6uQcgcdDwVjatPs4Jdm_2a61x5LS_UppQ1gnEqNnnAIBGxmumVr6Im-NbAcOe08EpIYE4T-KsR5dftF7PFn9SXBgM4Sl2hDmNVL01CgupotvpAbWrXJm6UjtSzAhWlW9tQafimyLnZchfh5kJVhqw6_1"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto p-6 space-y-6">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black tracking-tight">Execution Log &amp; ROI Tracker</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Audit of AI-driven Egyptian market trades vs EGX30 benchmark performance.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Last 6 Months</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Export Report</span>
+</button>
+</div>
+</div>
+<!-- Summary Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Gain from AI Advice</p>
+<span class="material-symbols-outlined text-success">trending_up</span>
+</div>
+<p class="text-2xl font-bold">EGP 142,500</p>
+<div class="mt-2 flex items-center gap-1">
+<span class="text-success text-sm font-bold">+12.5%</span>
+<span class="text-slate-400 text-xs">vs last period</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">AI Accuracy Rate</p>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<p class="text-2xl font-bold">88.4%</p>
+<div class="mt-2 flex items-center gap-1">
+<span class="text-success text-sm font-bold">+2.1%</span>
+<span class="text-slate-400 text-xs">confidence boost</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Active Recommendations</p>
+<span class="material-symbols-outlined text-amber-500">bolt</span>
+</div>
+<p class="text-2xl font-bold">12</p>
+<div class="mt-2 flex items-center gap-1">
+<span class="text-slate-500 dark:text-slate-400 text-sm">4 Strong Buy alerts</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Trades Executed</p>
+<span class="material-symbols-outlined text-slate-400">history</span>
+</div>
+<p class="text-2xl font-bold">156</p>
+<div class="mt-2 flex items-center gap-1">
+<span class="text-slate-500 dark:text-slate-400 text-sm">94% automated sync</span>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark p-6">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+<div>
+<h3 class="text-lg font-bold">Performance Comparison</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Benchmarking Portfolio vs EGX30 vs AI Optimal Strategy</p>
+</div>
+<div class="flex bg-slate-100 dark:bg-background-dark p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold bg-white dark:bg-surface-dark rounded shadow-sm">Growth %</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500">Value (EGP)</button>
+</div>
+</div>
+<div class="relative h-[300px] w-full">
+<!-- Simple SVG representation of the triple line chart -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="chart-grad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1773cf" stop-opacity="0.1"></stop>
+<stop offset="100%" stop-color="#1773cf" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="currentColor" stroke-opacity="0.05" x1="0" x2="1000" y1="50" y2="50"></line>
+<line stroke="currentColor" stroke-opacity="0.05" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="currentColor" stroke-opacity="0.05" x1="0" x2="1000" y1="250" y2="250"></line>
+<!-- EGX30 Benchmark (Gray Line) -->
+<path d="M0,220 Q100,210 200,230 T400,200 T600,210 T800,180 T1000,190" fill="none" stroke="#94a3b8" stroke-dasharray="4" stroke-width="2"></path>
+<!-- AI Optimal Path (Gold Line) -->
+<path d="M0,220 Q100,180 200,150 T400,100 T600,80 T800,50 T1000,30" fill="none" opacity="0.6" stroke="#eab308" stroke-width="2"></path>
+<!-- Actual Portfolio (Primary Blue Line) -->
+<path d="M0,220 L50,215 L100,200 L150,190 L200,205 L250,180 L300,160 L350,170 L400,140 L450,130 L500,145 L550,120 L600,100 L650,110 L700,90 L750,85 L800,70 L850,75 L900,60 L950,55 L1000,45" fill="none" stroke="#1773cf" stroke-width="3"></path>
+<path class="chart-gradient" d="M0,220 L50,215 L100,200 L150,190 L200,205 L250,180 L300,160 L350,170 L400,140 L450,130 L500,145 L550,120 L600,100 L650,110 L700,90 L750,85 L800,70 L850,75 L900,60 L950,55 L1000,45 V300 H0 Z"></path>
+</svg>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mt-6">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-primary"></span>
+<span class="text-xs font-medium">Your Portfolio (+18.2%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-slate-400"></span>
+<span class="text-xs font-medium">EGX30 Index (+6.4%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-amber-500"></span>
+<span class="text-xs font-medium">AI Optimal Path (+24.1%)</span>
+</div>
+</div>
+</div>
+<!-- Execution Log Table -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-border-dark flex items-center justify-between bg-slate-50 dark:bg-slate-800/50">
+<h3 class="text-lg font-bold">Execution Log</h3>
+<div class="flex items-center gap-4">
+<div class="flex border border-slate-200 dark:border-border-dark rounded-lg overflow-hidden">
+<button class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-surface-dark border-r border-slate-200 dark:border-border-dark">All</button>
+<button class="px-3 py-1.5 text-xs font-medium text-slate-500">Buy Only</button>
+<button class="px-3 py-1.5 text-xs font-medium text-slate-500">Sell Only</button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/30 text-slate-500 dark:text-slate-400 uppercase text-[11px] font-bold tracking-wider">
+<th class="px-6 py-4">Asset</th>
+<th class="px-6 py-4">Action &amp; Date</th>
+<th class="px-6 py-4">AI Confidence</th>
+<th class="px-6 py-4 text-right">Entry Price</th>
+<th class="px-6 py-4 text-right">Exit Price</th>
+<th class="px-6 py-4 text-right">Actual ROI %</th>
+<th class="px-6 py-4 text-center">Insight</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-border-dark">
+<!-- Table Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-background-dark flex items-center justify-center font-bold text-primary">COMG</div>
+<div>
+<div class="font-bold">CIB Egypt</div>
+<div class="text-xs text-slate-500">Banking</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="px-2 py-0.5 rounded text-[10px] font-black uppercase w-fit bg-success/20 text-success mb-1">BUY</span>
+<span class="text-xs text-slate-500">Oct 12, 2023 10:45 AM</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-24">
+<div class="flex justify-between mb-1">
+<span class="text-[10px] font-bold">92%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-background-dark rounded-full h-1.5">
+<div class="bg-success h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-medium">EGP 58.40</td>
+<td class="px-6 py-4 text-right font-medium">EGP 72.15</td>
+<td class="px-6 py-4 text-right">
+<span class="text-success font-bold text-base">+23.54%</span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary transition-colors cursor-help" title="Macro indicator: Interest rate spike prediction confirmed liquidity flow to banking sector.">info</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-background-dark flex items-center justify-center font-bold text-primary">HRHO</div>
+<div>
+<div class="font-bold">EFG Hermes</div>
+<div class="text-xs text-slate-500">Financial Services</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="px-2 py-0.5 rounded text-[10px] font-black uppercase w-fit bg-danger/20 text-danger mb-1">SELL</span>
+<span class="text-xs text-slate-500">Nov 04, 2023 02:15 PM</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-24">
+<div class="flex justify-between mb-1">
+<span class="text-[10px] font-bold">85%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-background-dark rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-medium">EGP 15.20</td>
+<td class="px-6 py-4 text-right font-medium">EGP 18.90</td>
+<td class="px-6 py-4 text-right">
+<span class="text-success font-bold text-base">+18.00%</span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary transition-colors cursor-help" title="Signal: Portfolio rebalancing triggered ahead of market-wide volatility.">info</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-background-dark flex items-center justify-center font-bold text-primary">SWDY</div>
+<div>
+<div class="font-bold">Elsewedy Electric</div>
+<div class="text-xs text-slate-500">Industrials</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="px-2 py-0.5 rounded text-[10px] font-black uppercase w-fit bg-success/20 text-success mb-1">BUY</span>
+<span class="text-xs text-slate-500">Nov 28, 2023 11:00 AM</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-24">
+<div class="flex justify-between mb-1">
+<span class="text-[10px] font-bold">78%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-background-dark rounded-full h-1.5">
+<div class="bg-amber-500 h-1.5 rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-medium">EGP 24.10</td>
+<td class="px-6 py-4 text-right font-medium">EGP 22.80</td>
+<td class="px-6 py-4 text-right">
+<span class="text-danger font-bold text-base">-5.39%</span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary transition-colors cursor-help" title="Risk Factor: Unexpected supply chain disruption impacted short-term EPS targets. AI suggests HOLD.">info</button>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-background-dark flex items-center justify-center font-bold text-primary">MFOT</div>
+<div>
+<div class="font-bold">Misr Fertilizers</div>
+<div class="text-xs text-slate-500">Materials</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="px-2 py-0.5 rounded text-[10px] font-black uppercase w-fit bg-success/20 text-success mb-1">BUY</span>
+<span class="text-xs text-slate-500">Dec 05, 2023 09:30 AM</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-24">
+<div class="flex justify-between mb-1">
+<span class="text-[10px] font-bold">96%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-background-dark rounded-full h-1.5">
+<div class="bg-success h-1.5 rounded-full" style="width: 96%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-medium">EGP 512.00</td>
+<td class="px-6 py-4 text-right font-medium">EGP 645.00</td>
+<td class="px-6 py-4 text-right">
+<span class="text-success font-bold text-base">+25.98%</span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary transition-colors cursor-help" title="Export Catalyst: AI detected significant global fertilizer price surge + EGP devaluation hedge.">info</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-slate-200 dark:border-border-dark flex items-center justify-between">
+<p class="text-xs text-slate-500">Showing 4 of 156 executed trades</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-slate-200 dark:border-border-dark rounded text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800">Previous</button>
+<button class="px-3 py-1 bg-primary text-white rounded text-xs font-bold shadow-sm">Next</button>
+</div>
+</div>
+</div>
+<!-- Tooltip / Rationale Note -->
+<div class="bg-primary/5 border border-primary/20 p-4 rounded-lg flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-0.5">lightbulb</span>
+<div>
+<h4 class="text-sm font-bold text-primary">AI Strategy Note</h4>
+<p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Current market conditions in Egypt are heavily influenced by FX liquidity and global commodity cycles. The "Optimal Path" reflects immediate action on all <b>High Confidence (85%+)</b> alerts. Your actual portfolio performance is tracking 12.4% above the EGX30 benchmark due to successful overweighting in the banking and materials sectors.
+                </p>
+</div>
+</div>
+</main>
+<footer class="max-w-[1440px] mx-auto px-6 py-8 mt-12 border-t border-slate-200 dark:border-border-dark flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+<div class="flex items-center gap-4">
+<span>© 2024 InvestAI Egypt. All rights reserved.</span>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="size-2 bg-success rounded-full"></span> System Live</span>
+<span>Last Sync: 2 minutes ago</span>
+</div>
+</footer>
+</body></html>

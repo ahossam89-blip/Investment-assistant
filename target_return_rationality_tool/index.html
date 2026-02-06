@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Target Return Rationality Tool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "card-dark": "#1c2126",
+                        "border-dark": "#293038",
+                        "success": "#10b981",
+                        "error": "#ef4444"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #293038;
+            height: 4px;
+            border-radius: 2px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            background: #1773cf;
+            border-radius: 50%;
+            margin-top: -6px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark px-6 py-3 bg-background-dark">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-3xl">analytics</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Rationality.AI</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-[#9dabb8] text-sm font-medium leading-normal hover:text-white transition-colors" href="#">EGX Insights</a>
+<a class="text-[#9dabb8] text-sm font-medium leading-normal hover:text-white transition-colors" href="#">Global Macros</a>
+<a class="text-[#9dabb8] text-sm font-medium leading-normal hover:text-white transition-colors" href="#">Backtest</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#9dabb8] flex border-none bg-border-dark items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-lg">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-border-dark focus:border-none h-full placeholder:text-[#9dabb8] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Search Tickers" value=""/>
+</div>
+</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#9dabb8]">notifications</span>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 border border-border-dark" data-alt="User profile avatar with professional look" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAv1fXuIPRQPHMhIoBnbCfGV4XG1kaXqyEl1Bw4qASpbWN9cLKUUGx0JLB3b4J6iXK1AtP1ZUNLO4OWYQX6o0CgEvy6Cttb-gj_qEm2LqO6ystWuqXij9YyyQcJk1gADatXz5tDMdyNaSCGAdDVf87ogubT_FV98vxhnLCHSrRlEckiOh_PmeIKRlyoKfb4hSys9N2w8CeziDMnpmuaTIgGiKI6dAzoz2Hahk1bszpyq5NbP0OSrZnXo2X4Txe2YP0fxDFwfVUVud9M");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Side Navigation -->
+<aside class="hidden lg:flex w-64 flex-col justify-between border-r border-border-dark bg-background-dark p-4 gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col mb-4">
+<h1 class="text-white text-xs font-bold uppercase tracking-widest">Market Watch</h1>
+<p class="text-[#9dabb8] text-[10px] font-normal leading-normal">Last Update: Just Now</p>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white text-xl">trending_up</span>
+<p class="text-white text-sm font-medium">EGX 30</p>
+</div>
+<span class="text-success text-xs font-bold">+1.24%</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg bg-primary/20 border border-primary/30">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-xl">precision_manufacturing</span>
+<p class="text-white text-sm font-medium">Rationality Tool</p>
+</div>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white text-xl">account_balance</span>
+<p class="text-white text-sm font-medium">Bond Yields</p>
+</div>
+<span class="text-[#9dabb8] text-xs font-bold">23.5%</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white text-xl">monetization_on</span>
+<p class="text-white text-sm font-medium">USD/EGP</p>
+</div>
+<span class="text-[#9dabb8] text-xs font-bold">48.20</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 border-t border-border-dark pt-4">
+<div class="flex items-center gap-3 px-3 py-2 text-[#9dabb8] hover:text-white cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Preferences</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col p-6 max-w-7xl mx-auto w-full gap-6">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-white text-3xl font-black leading-tight tracking-[-0.033em]">Target Return Feasibility</p>
+<p class="text-[#9dabb8] text-base font-normal leading-normal">Advanced AI calibration for Egyptian &amp; Global portfolios.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 px-4 bg-border-dark text-white text-sm font-bold hover:bg-border-dark/80 transition-all">
+<span class="material-symbols-outlined text-lg mr-2">history</span>
+                            Past Analyses
+                        </button>
+<button class="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-lg mr-2">file_download</span>
+                            Export PDF
+                        </button>
+</div>
+</div>
+<!-- Central Control Card -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<div class="xl:col-span-2 flex flex-col gap-6">
+<div class="bg-card-dark p-6 rounded-xl border border-border-dark shadow-xl">
+<div class="flex flex-col gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Input: Return -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">target</span>
+<p class="text-white text-base font-bold">Required Annual Return (%)</p>
+</div>
+<div class="flex items-stretch rounded-lg group">
+<input class="form-input flex-1 bg-background-dark border border-border-dark border-r-0 rounded-l-lg h-16 text-2xl font-black text-white focus:ring-1 focus:ring-primary focus:border-primary px-4 transition-all" step="0.5" type="number" value="28.5"/>
+<div class="bg-background-dark border border-border-dark border-l-0 rounded-r-lg flex items-center px-4 text-[#9dabb8] font-bold text-xl">%</div>
+</div>
+<p class="text-xs text-[#9dabb8]">Typical EGX risk-free rate is currently ~22.5%.</p>
+</div>
+<!-- Input: Time Horizon -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<p class="text-white text-base font-bold">Time Horizon</p>
+</div>
+<div class="flex flex-col gap-4 bg-background-dark border border-border-dark rounded-lg p-4 h-16 justify-center">
+<input class="w-full" max="10" min="1" type="range" value="5"/>
+<div class="flex justify-between text-[10px] text-[#9dabb8] font-bold">
+<span>1 YEAR</span>
+<span>3 YEARS</span>
+<span>5 YEARS</span>
+<span>10+ YEARS</span>
+</div>
+</div>
+<p class="text-xs text-[#9dabb8]">Analyzing feasibility over a <span class="text-white font-bold">5-year</span> window.</p>
+</div>
+</div>
+<button class="w-full bg-primary h-14 rounded-lg text-lg font-bold hover:shadow-[0_0_20px_rgba(23,115,207,0.3)] transition-all">Run Rationality Engine</button>
+</div>
+</div>
+<!-- Verdict Card (Irrational State) -->
+<div class="bg-error/10 border border-error/30 p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start">
+<div class="bg-error/20 p-4 rounded-full text-error">
+<span class="material-symbols-outlined text-4xl">warning</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<h3 class="text-error text-xl font-black uppercase">Rationality Check: High Risk / Irrational</h3>
+<span class="bg-error text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase">Critical</span>
+</div>
+<p class="text-white/80 leading-relaxed text-sm">
+                                    Targeting <span class="font-bold underline decoration-error">28.5% annually</span> in the current macro climate is statistically improbable without significant leverage. Egyptian 91-day T-bills provide a benchmark of 22%, meaning you are seeking a 6.5% alpha in a high-inflation environment.
+                                </p>
+<div class="flex gap-4 mt-2">
+<div class="flex items-center gap-1 text-[#9dabb8] text-xs">
+<span class="material-symbols-outlined text-xs">analytics</span>
+<span>Probability of Success: <span class="text-white font-bold">14%</span></span>
+</div>
+<div class="flex items-center gap-1 text-[#9dabb8] text-xs">
+<span class="material-symbols-outlined text-xs">show_chart</span>
+<span>Max Drawdown Risk: <span class="text-error font-bold">-32%</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Probability Chart Placeholder -->
+<div class="bg-card-dark border border-border-dark p-6 rounded-xl flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="text-white font-bold">Probability Distribution (Monte Carlo 10k Sims)</h3>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-xs text-[#9dabb8]">
+<div class="w-3 h-3 bg-primary rounded-full"></div> Expected
+                                    </span>
+<span class="flex items-center gap-1 text-xs text-[#9dabb8]">
+<div class="w-3 h-3 bg-error rounded-full"></div> Your Target
+                                    </span>
+</div>
+</div>
+<div class="h-64 w-full relative overflow-hidden flex items-end justify-between px-2 pt-4">
+<!-- Mock Graph Elements -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent"></div>
+<div class="w-[8%] h-[20%] bg-primary/20 rounded-t border-t border-primary/50"></div>
+<div class="w-[8%] h-[35%] bg-primary/20 rounded-t border-t border-primary/50"></div>
+<div class="w-[8%] h-[55%] bg-primary/20 rounded-t border-t border-primary/50"></div>
+<div class="w-[8%] h-[75%] bg-primary/30 rounded-t border-t border-primary/50"></div>
+<div class="w-[8%] h-[90%] bg-primary/40 rounded-t border-t-2 border-primary"></div>
+<div class="w-[8%] h-[70%] bg-primary/30 rounded-t border-t border-primary/50 relative">
+<!-- Target Line Marker -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+<div class="bg-error text-white text-[10px] px-2 py-1 rounded font-bold">28.5% TARGET</div>
+<div class="w-0.5 h-12 bg-error"></div>
+</div>
+</div>
+<div class="w-[8%] h-[45%] bg-primary/20 rounded-t border-t border-primary/50"></div>
+<div class="w-[8%] h-[30%] bg-primary/20 rounded-t border-t border-primary/50"></div>
+<div class="w-[8%] h-[15%] bg-primary/20 rounded-t border-t border-primary/50"></div>
+<div class="w-[8%] h-[5%] bg-primary/20 rounded-t border-t border-primary/50"></div>
+</div>
+<div class="flex justify-between px-2 text-[10px] text-[#9dabb8] font-mono border-t border-border-dark pt-2">
+<span>-10%</span><span>5%</span><span>20% (AVG)</span><span>35%</span><span>50%+</span>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Assets & Scenarios -->
+<div class="flex flex-col gap-6">
+<!-- Suggested Asset Mix -->
+<div class="bg-card-dark border border-border-dark rounded-xl flex flex-col overflow-hidden">
+<div class="p-4 border-b border-border-dark bg-white/5">
+<h3 class="text-white font-bold text-sm">Required Mix for Target</h3>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-white font-medium">EGX 30 High Beta</span>
+<span class="text-primary font-bold">45%</span>
+</div>
+<div class="w-full bg-background-dark h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-white font-medium">Gold (Global Spot)</span>
+<span class="text-primary font-bold">25%</span>
+</div>
+<div class="w-full bg-background-dark h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-white font-medium">Egypt T-Bills</span>
+<span class="text-primary font-bold">20%</span>
+</div>
+<div class="w-full bg-background-dark h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 20%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-white font-medium">Crypto (BTC/ETH)</span>
+<span class="text-primary font-bold">10%</span>
+</div>
+<div class="w-full bg-background-dark h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 10%"></div>
+</div>
+</div>
+<div class="mt-2 p-3 bg-primary/10 rounded border border-primary/20">
+<p class="text-[10px] text-[#9dabb8] leading-tight italic">
+                                        Note: This mix increases portfolio volatility to <span class="text-white font-bold">22.4%</span>, exceeding typical retail safety parameters.
+                                    </p>
+</div>
+</div>
+</div>
+<!-- Macro Correlation -->
+<div class="bg-card-dark border border-border-dark rounded-xl p-4 flex flex-col gap-4">
+<h3 class="text-white font-bold text-sm">Market Correlation</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-[#9dabb8]">currency_exchange</span>
+<span class="text-xs text-[#9dabb8]">USD Impact</span>
+</div>
+<span class="text-xs font-bold text-success">+0.82</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-[#9dabb8]">bubble</span>
+<span class="text-xs text-[#9dabb8]">Inflation Delta</span>
+</div>
+<span class="text-xs font-bold text-error">-0.45</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-[#9dabb8]">oil_barrel</span>
+<span class="text-xs text-[#9dabb8]">Brent Crude</span>
+</div>
+<span class="text-xs font-bold text-white">+0.12</span>
+</div>
+</div>
+</div>
+<!-- Info Card -->
+<div class="bg-primary/20 border border-primary/40 rounded-xl p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-xl">smart_toy</span>
+<h4 class="text-sm font-bold">AI Suggestion</h4>
+</div>
+<p class="text-xs leading-relaxed text-[#d1d5db]">
+                                By extending your horizon to <span class="font-bold text-white">8 years</span>, the probability of hitting a 25% CAGR increases to <span class="font-bold text-success">42%</span> due to compounding cycles in Egyptian real estate and banking stocks.
+                            </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

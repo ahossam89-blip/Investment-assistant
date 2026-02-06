@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up | Egypt Financial Analytics Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1e1e1e",
+                        "border-dark": "#333333",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex items-stretch overflow-x-hidden font-display">
+<!-- Split Screen Layout -->
+<main class="flex w-full min-h-screen">
+<!-- Left Side: Visual Anchor & Value Prop -->
+<section class="hidden lg:flex flex-col justify-between w-1/2 relative overflow-hidden bg-[#0a0a0a] p-12">
+<!-- Background Decoration -->
+<div class="absolute inset-0 z-0 opacity-40">
+<div class="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-primary/10"></div>
+<div class="w-full h-full bg-center bg-cover bg-no-repeat" data-alt="Dark financial stock market candlestick chart interface" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmvoMKlR6bd4HFhhhbyh2QL62uJZIqbNrvDOo--ZOvlQ7YVEHypSi-UnRyg9YwlG0DRKkLv9tQEA5M5e3mR98lhLDBO6AYlZBfcF15WUfQBJYXVt1ETNhwtCb9BF5k8OABlT41DH637n0owAUyGJ9aVVAwgMF_oFkZe0u6mMbMXV5s02Pim1DlmtgeKSNway3utqM_G9S6m0-L4aKyxTx_RWkjElGtYpJh97osBBZcPJpycfCWNL-q4S8GwUrUQnW96z2WdlcHw1jk');">
+</div>
+</div>
+<!-- Branding -->
+<div class="relative z-10 flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold">query_stats</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight text-white uppercase">EgyptAlpha</span>
+</div>
+<!-- Content -->
+<div class="relative z-10 max-w-lg">
+<h1 class="text-5xl font-extrabold text-white leading-[1.1] mb-6">
+                    Master the <span class="text-primary">Egyptian Market</span> with Global Precision.
+                </h1>
+<p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                    Institutional-grade analytics combining local EGX insights with global macroeconomic datasets. Designed for the sophisticated investor.
+                </p>
+<!-- Feature List -->
+<div class="grid gap-6">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">done</span>
+</div>
+<div>
+<h3 class="text-white font-semibold">Real-time EGX Data</h3>
+<p class="text-slate-500 text-sm">Direct low-latency feeds from the Egyptian Exchange.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">public</span>
+</div>
+<div>
+<h3 class="text-white font-semibold">Global Macro Integration</h3>
+<p class="text-slate-500 text-sm">Correlate local performance with US Fed rates and oil prices.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">shield_person</span>
+</div>
+<div>
+<h3 class="text-white font-semibold">Privacy-First Portfolio Management</h3>
+<p class="text-slate-500 text-sm">Anonymous tracking with zero-knowledge encryption.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Quote -->
+<div class="relative z-10 border-l-2 border-primary pl-6 py-2">
+<p class="italic text-slate-400 text-sm">"The most comprehensive dataset for the MENA region I've used in a decade."</p>
+<p class="text-white font-bold text-xs mt-2 uppercase tracking-widest">— Senior Portfolio Manager, Cairo Capital</p>
+</div>
+</section>
+<!-- Right Side: Sign-Up Form -->
+<section class="w-full lg:w-1/2 bg-background-light dark:bg-background-dark flex flex-col items-center justify-center p-6 md:p-12 lg:p-20 overflow-y-auto custom-scrollbar">
+<div class="w-full max-w-md">
+<!-- Mobile Branding -->
+<div class="lg:hidden flex items-center gap-2 mb-12">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold text-lg">query_stats</span>
+</div>
+<span class="text-lg font-extrabold tracking-tight dark:text-white uppercase">EgyptAlpha</span>
+</div>
+<div class="mb-10">
+<h2 class="text-3xl font-extrabold mb-2 dark:text-white">Create your account</h2>
+<p class="text-slate-500 dark:text-slate-400">Join 5,000+ analysts and institutional investors.</p>
+</div>
+<form class="space-y-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Full Name</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Mohamed Ali" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Work Email</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="m.ali@investment-firm.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Password</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all pr-12" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<!-- Password Strength -->
+<div class="flex gap-1 mt-2">
+<div class="h-1 flex-1 rounded-full bg-primary"></div>
+<div class="h-1 flex-1 rounded-full bg-primary"></div>
+<div class="h-1 flex-1 rounded-full bg-primary/20"></div>
+<div class="h-1 flex-1 rounded-full bg-primary/20"></div>
+</div>
+<p class="text-[11px] text-slate-500 font-medium">Strength: <span class="text-primary uppercase">Moderate</span></p>
+</div>
+<!-- Market Selector -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Primary Market Focus</label>
+<div class="relative">
+<select class="w-full appearance-none bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all cursor-pointer">
+<option selected="" value="egypt">Egypt (EGX)</option>
+<option value="saudi">Saudi Arabia (TADAWUL)</option>
+<option value="uae">UAE (ADX/DFM)</option>
+<option value="global">Global Macro</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Data Privacy & Terms -->
+<div class="flex items-start gap-3 py-2">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary bg-white dark:bg-surface-dark border-slate-300 dark:border-border-dark" id="terms" type="checkbox"/>
+</div>
+<label class="text-xs text-slate-500 dark:text-slate-400 leading-normal" for="terms">
+                            I agree to the <a class="text-primary font-bold hover:underline" href="#">Terms of Service</a> and acknowledge the <a class="text-primary font-bold hover:underline" href="#">Privacy Policy</a>. 
+                            <span class="block mt-1 text-slate-600 dark:text-slate-500 italic flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                                Anonymous portfolio data is encrypted and never sold.
+                            </span>
+</label>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary text-background-dark font-extrabold text-base py-4 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/10">
+                        Get Started
+                    </button>
+</form>
+<div class="mt-8 text-center">
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                        Already have an account? 
+                        <a class="text-primary font-bold ml-1 hover:underline" href="#">Log in</a>
+</p>
+</div>
+<!-- Trust Badges -->
+<div class="mt-12 pt-8 border-t border-slate-100 dark:border-border-dark flex justify-center gap-8 items-center opacity-50 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">SSL Secured</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">encrypted</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">AES-256</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">gavel</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">FRA Compliant</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

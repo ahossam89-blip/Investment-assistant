@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Macro Dashboard - Institutional Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "surface-dark": "#1c2126",
+                        "border-dark": "#293038",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #293038; border-radius: 10px; }
+        .impact-gradient-red { background: linear-gradient(90deg, rgba(250, 98, 56, 0.2) 0%, transparent 100%); }
+        .impact-gradient-green { background: linear-gradient(90deg, rgba(11, 218, 91, 0.2) 0%, transparent 100%); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-solid border-border-dark bg-background-dark px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">MacroPulse Egypt</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">Terminal</a>
+<a class="text-slate-400 text-sm font-medium hover:text-white transition-colors" href="#">Geopolitics</a>
+<a class="text-slate-400 text-sm font-medium hover:text-white transition-colors" href="#">Impact Models</a>
+<a class="text-slate-400 text-sm font-medium hover:text-white transition-colors" href="#">Forecasting</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-64 bg-surface-dark border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary placeholder:text-slate-500 text-white" placeholder="Search assets, news, or regions..."/>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-dark rounded-lg text-slate-300 hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 bg-surface-dark rounded-lg text-slate-300 hover:text-white">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- Side Navigation (Sidebar) -->
+<aside class="w-64 bg-background-dark border-r border-border-dark flex flex-col justify-between p-4 shrink-0">
+<div class="flex flex-col gap-6">
+<div>
+<h1 class="text-white text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Market Monitor</h1>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">public</span>
+<p class="text-sm font-semibold">Global Map</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface-dark hover:text-white transition-all">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-sm font-medium">Impact Matrix</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface-dark hover:text-white transition-all">
+<span class="material-symbols-outlined">rss_feed</span>
+<p class="text-sm font-medium">Intelligence Feed</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface-dark hover:text-white transition-all">
+<span class="material-symbols-outlined">bar_chart</span>
+<p class="text-sm font-medium">Asset Allocation</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface-dark hover:text-white transition-all">
+<span class="material-symbols-outlined">security</span>
+<p class="text-sm font-medium">Risk Management</p>
+</div>
+</div>
+</div>
+<div class="border-t border-border-dark pt-6">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Risk Indices</h3>
+<div class="space-y-4">
+<div class="bg-surface-dark/50 p-3 rounded-lg border border-border-dark/50">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-slate-400">Geopolitical Risk (MENA)</span>
+<span class="text-red-400 font-bold">78.2</span>
+</div>
+<div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+<div class="bg-red-500 h-full w-[78%]"></div>
+</div>
+</div>
+<div class="bg-surface-dark/50 p-3 rounded-lg border border-border-dark/50">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-slate-400">Suez Disruption Index</span>
+<span class="text-amber-400 font-bold">42.1</span>
+</div>
+<div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[42%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-dark p-4 rounded-xl">
+<div class="flex items-center gap-3 mb-2">
+<div class="size-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs font-medium text-slate-300">Market Connected</span>
+</div>
+<p class="text-[10px] text-slate-500">Last update: 14:22:10 GMT+2</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto custom-scrollbar bg-background-dark">
+<!-- Market Ticker Stats -->
+<div class="flex flex-wrap gap-4 p-4 border-b border-border-dark bg-background-dark/50">
+<div class="flex min-w-[180px] flex-1 flex-col gap-1 rounded-xl p-4 bg-surface-dark border border-border-dark">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">EGX30 Index</p>
+<div class="flex items-end justify-between">
+<p class="text-white text-xl font-bold">28,450.22</p>
+<p class="text-red-500 text-sm font-bold flex items-center">-1.2% <span class="material-symbols-outlined text-sm ml-1">trending_down</span></p>
+</div>
+</div>
+<div class="flex min-w-[180px] flex-1 flex-col gap-1 rounded-xl p-4 bg-surface-dark border border-border-dark">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">USD/EGP</p>
+<div class="flex items-end justify-between">
+<p class="text-white text-xl font-bold">48.10</p>
+<p class="text-green-500 text-sm font-bold flex items-center">+0.05% <span class="material-symbols-outlined text-sm ml-1">trending_up</span></p>
+</div>
+</div>
+<div class="flex min-w-[180px] flex-1 flex-col gap-1 rounded-xl p-4 bg-surface-dark border border-border-dark">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Brent Crude</p>
+<div class="flex items-end justify-between">
+<p class="text-white text-xl font-bold">$82.45</p>
+<p class="text-red-500 text-sm font-bold flex items-center">-0.8% <span class="material-symbols-outlined text-sm ml-1">trending_down</span></p>
+</div>
+</div>
+<div class="flex min-w-[180px] flex-1 flex-col gap-1 rounded-xl p-4 bg-surface-dark border border-border-dark">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Gold (24K)</p>
+<div class="flex items-end justify-between">
+<p class="text-white text-xl font-bold">3,120 <span class="text-xs font-normal text-slate-500 ml-1">EGP</span></p>
+<p class="text-green-500 text-sm font-bold flex items-center">+1.5% <span class="material-symbols-outlined text-sm ml-1">trending_up</span></p>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-12 gap-0">
+<!-- Central Column: Map and Matrix -->
+<div class="col-span-12 lg:col-span-8 flex flex-col border-r border-border-dark">
+<!-- Map Component -->
+<div class="relative p-4 border-b border-border-dark h-[450px]">
+<div class="absolute top-8 left-8 z-10">
+<h3 class="text-white text-lg font-bold mb-1">Live Geopolitical Heatmap</h3>
+<p class="text-slate-400 text-xs">High tension zones and trade route status</p>
+</div>
+<div class="w-full h-full rounded-xl overflow-hidden bg-[#0d1218] border border-border-dark relative">
+<div class="absolute inset-0 opacity-40 bg-cover bg-center" data-alt="Dark stylized world map focusing on North Africa and Middle East" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA90YKA2X7Df6mPqP6BeT-h3i8lDbqbclLeqGdoYmeYFX4VlcOqwfAcMp3VHu_Lr5n8gZYGtomg1bu98m0BnKKShwT0Tdeb_FxS97cFD852IkG3ANzN3R56C8yl4fyF43Pjp-lFudXpWZkklXtb8ibZABnbwgXmwHKGNdOoTSXc5LOlkPGcTfKAMmn0vsO4CurBtGi_ZymDvUzEnHrjLXj9gfwliNLvuqMo7p60bzkHtjz-xXRt-sd7-Hp5fGANEAwavFr1hCJxIL4I");'></div>
+<!-- Map Overlays -->
+<div class="absolute top-1/2 left-[55%] -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<div class="absolute inset-0 size-8 bg-red-500 rounded-full animate-ping opacity-25"></div>
+<div class="size-8 bg-red-500/50 rounded-full flex items-center justify-center border-2 border-red-500 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-sm">warning</span>
+</div>
+<div class="absolute top-10 -left-16 w-32 bg-surface-dark p-2 rounded shadow-xl border border-border-dark text-[10px] z-20">
+<p class="font-bold text-red-400 mb-1">Suez Canal Incident</p>
+<p class="text-slate-400">Transit volume down 14% WoW due to regional tensions.</p>
+</div>
+</div>
+</div>
+<!-- Map Controls -->
+<div class="absolute bottom-6 right-6 flex flex-col gap-2">
+<div class="flex flex-col bg-surface-dark rounded-lg overflow-hidden border border-border-dark">
+<button class="p-2 hover:bg-slate-700 text-slate-300"><span class="material-symbols-outlined">add</span></button>
+<div class="h-px bg-border-dark"></div>
+<button class="p-2 hover:bg-slate-700 text-slate-300"><span class="material-symbols-outlined">remove</span></button>
+</div>
+<button class="p-2 bg-surface-dark rounded-lg border border-border-dark text-slate-300 hover:bg-slate-700">
+<span class="material-symbols-outlined">near_me</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Impact Matrix Table -->
+<div class="p-6">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-white text-lg font-bold">Impact Matrix</h3>
+<p class="text-slate-400 text-xs uppercase tracking-wider mt-1">Projected Correlation: Global Events vs Egyptian Markets</p>
+</div>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+                                FULL REPORT <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="overflow-hidden rounded-xl border border-border-dark">
+<table class="w-full text-left text-sm">
+<thead class="bg-surface-dark/80 text-slate-400 uppercase text-[11px] font-bold">
+<tr>
+<th class="px-4 py-3 border-b border-border-dark">Incident / Scenario</th>
+<th class="px-4 py-3 border-b border-border-dark">Likelihood</th>
+<th class="px-4 py-3 border-b border-border-dark">EGX30 Impact</th>
+<th class="px-4 py-3 border-b border-border-dark">EGP Exchange</th>
+<th class="px-4 py-3 border-b border-border-dark">Status</th>
+</tr>
+</thead>
+<tbody class="bg-surface-dark/30 divide-y divide-border-dark">
+<tr class="hover:bg-surface-dark/50 transition-colors">
+<td class="px-4 py-4 font-medium text-white">Red Sea Transit Obstruction</td>
+<td class="px-4 py-4"><span class="px-2 py-0.5 rounded-full bg-red-900/40 text-red-400 text-[10px] font-bold">CRITICAL</span></td>
+<td class="px-4 py-4 impact-gradient-red"><span class="text-red-500 font-bold">-4.5%</span></td>
+<td class="px-4 py-4 impact-gradient-red"><span class="text-red-500 font-bold">-2.1%</span></td>
+<td class="px-4 py-4 text-slate-500 italic">Active</td>
+</tr>
+<tr class="hover:bg-surface-dark/50 transition-colors">
+<td class="px-4 py-4 font-medium text-white">Fed Interest Rate Pivot</td>
+<td class="px-4 py-4"><span class="px-2 py-0.5 rounded-full bg-amber-900/40 text-amber-400 text-[10px] font-bold">MODERATE</span></td>
+<td class="px-4 py-4 impact-gradient-green"><span class="text-green-500 font-bold">+2.8%</span></td>
+<td class="px-4 py-4 impact-gradient-green"><span class="text-green-500 font-bold">+1.2%</span></td>
+<td class="px-4 py-4 text-slate-500 italic">Projected Q3</td>
+</tr>
+<tr class="hover:bg-surface-dark/50 transition-colors">
+<td class="px-4 py-4 font-medium text-white">Wheat Supply Chain Shock</td>
+<td class="px-4 py-4"><span class="px-2 py-0.5 rounded-full bg-red-900/40 text-red-400 text-[10px] font-bold">HIGH</span></td>
+<td class="px-4 py-4 impact-gradient-red"><span class="text-red-500 font-bold">-1.8%</span></td>
+<td class="px-4 py-4 impact-gradient-red"><span class="text-red-500 font-bold">-3.4%</span></td>
+<td class="px-4 py-4 text-slate-500 italic">Monitoring</td>
+</tr>
+<tr class="hover:bg-surface-dark/50 transition-colors">
+<td class="px-4 py-4 font-medium text-white">Privatization Program Speedup</td>
+<td class="px-4 py-4"><span class="px-2 py-0.5 rounded-full bg-green-900/40 text-green-400 text-[10px] font-bold">LOW</span></td>
+<td class="px-4 py-4 impact-gradient-green"><span class="text-green-500 font-bold">+5.1%</span></td>
+<td class="px-4 py-4 impact-gradient-green"><span class="text-green-500 font-bold">+0.8%</span></td>
+<td class="px-4 py-4 text-slate-500 italic">Rumor</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column: Dual News Feed -->
+<div class="col-span-12 lg:col-span-4 flex flex-col h-full overflow-hidden">
+<!-- Tabs for News Feed -->
+<div class="flex border-b border-border-dark bg-surface-dark/40 px-4">
+<button class="flex-1 flex flex-col items-center justify-center border-b-[3px] border-primary text-white py-4">
+<p class="text-sm font-bold tracking-wider">OFFICIAL CHANNELS</p>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 py-4 hover:text-slate-300">
+<p class="text-sm font-bold tracking-wider">MARKET RUMORS</p>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-4">
+<!-- News Card 1 -->
+<div class="bg-surface-dark/60 border border-border-dark p-4 rounded-xl hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-primary/20 text-primary text-[10px] font-black uppercase px-2 py-0.5 rounded">Central Bank</span>
+<span class="text-slate-500 text-[10px]">14 MIN AGO</span>
+</div>
+<h4 class="text-white text-sm font-bold leading-snug mb-2">CBE announces foreign reserve growth for consecutive month.</h4>
+<p class="text-slate-400 text-xs leading-relaxed">Official data shows reserves hitting $46.1B, surpassing analyst expectations by 400bps.</p>
+<div class="mt-3 pt-3 border-t border-border-dark flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500 text-xs">arrow_upward</span>
+<span class="text-[10px] text-slate-500 uppercase font-bold">Bullish for EGP</span>
+</div>
+</div>
+<!-- News Card 2 -->
+<div class="bg-surface-dark/60 border border-border-dark p-4 rounded-xl hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-slate-700 text-slate-300 text-[10px] font-black uppercase px-2 py-0.5 rounded">IMF REPORT</span>
+<span class="text-slate-500 text-[10px]">2 HOURS AGO</span>
+</div>
+<h4 class="text-white text-sm font-bold leading-snug mb-2">Revised GDP forecasts for MENA region released.</h4>
+<p class="text-slate-400 text-xs leading-relaxed">Egypt's growth outlook maintained at 4.2% despite regional trade corridor slowdowns.</p>
+</div>
+<!-- News Card 3 -->
+<div class="bg-surface-dark/60 border border-border-dark p-4 rounded-xl hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-amber-900/30 text-amber-500 text-[10px] font-black uppercase px-2 py-0.5 rounded">Rumor Desk</span>
+<span class="text-slate-500 text-[10px]">10:45 AM</span>
+</div>
+<h4 class="text-white text-sm font-bold leading-snug mb-2">Institutional flow moving into Telecom Egypt (ETEL.CA).</h4>
+<p class="text-slate-400 text-xs leading-relaxed">Unconfirmed reports of major Gulf sovereign fund increasing stake in local telco.</p>
+<div class="mt-3 pt-3 border-t border-border-dark flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-xs">psychology</span>
+<span class="text-[10px] text-slate-500 uppercase font-bold">Source: Trading Floor Intel</span>
+</div>
+</div>
+<!-- News Card 4 -->
+<div class="bg-surface-dark/60 border border-border-dark p-4 rounded-xl hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-slate-700 text-slate-300 text-[10px] font-black uppercase px-2 py-0.5 rounded">ENERGY</span>
+<span class="text-slate-500 text-[10px]">YESTERDAY</span>
+</div>
+<h4 class="text-white text-sm font-bold leading-snug mb-2">Zohr field production updates anticipated.</h4>
+<p class="text-slate-400 text-xs leading-relaxed">Ministry of Petroleum to release comprehensive output data for the first half of the year.</p>
+</div>
+<!-- Load More -->
+<button class="w-full py-3 text-xs font-bold text-slate-500 hover:text-white transition-colors border border-dashed border-border-dark rounded-xl">
+                            VIEW ARCHIVED UPDATES
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer Status Bar -->
+<footer class="bg-background-dark border-t border-border-dark px-6 py-2 flex items-center justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+<div class="flex gap-6">
+<span class="flex items-center gap-1.5"><div class="size-1.5 rounded-full bg-green-500"></div> EGX LIVE</span>
+<span class="flex items-center gap-1.5"><div class="size-1.5 rounded-full bg-green-500"></div> LSE CONNECTED</span>
+<span class="flex items-center gap-1.5"><div class="size-1.5 rounded-full bg-slate-600"></div> NYSE (CLOSED)</span>
+</div>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">API Status</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
+<span class="text-slate-700">|</span>
+<span>SYSTEM v4.8.2</span>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Egyptian Market Sentiment &amp; Rumors</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0f172a",
+                        "surface-dark": "#1e293b",
+                        "accent-yellow": "#fbbf24",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 py-3 z-30">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">query_stats</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">EG Sentiment</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary text-sm font-semibold border-b-2 border-primary py-1" href="#">Intelligence</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Markets</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Macro</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Portfolios</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-100 dark:bg-surface-dark border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary" placeholder="Search signals, symbols, rumors..." type="text"/>
+</div>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-surface-dark text-slate-600 dark:text-slate-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary font-bold text-xs" data-alt="User profile placeholder">
+                    JD
+                </div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark hidden xl:flex flex-col p-4 gap-6">
+<div>
+<h1 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Market Monitor</h1>
+<div class="space-y-1">
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary font-semibold">
+<span class="material-symbols-outlined">dynamic_feed</span>
+<span class="text-sm">Unified Feed</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="text-sm">Official Releases</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-sm">Yellow Pages</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="text-sm">Sector Heatmap</span>
+</button>
+</div>
+</div>
+<div class="mt-auto">
+<div class="p-4 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20">
+<p class="text-xs font-bold text-primary uppercase mb-1">PRO INSIGHT</p>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-snug">IMF delegation expected in Cairo within 48 hours for final review.</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto scrollbar-hide bg-slate-50 dark:bg-[#0b1219]">
+<!-- Header Section -->
+<div class="p-6">
+<div class="flex flex-wrap justify-between items-end gap-4 mb-6">
+<div>
+<h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Egyptian Market Intelligence</h1>
+<p class="text-slate-500 dark:text-slate-400">Real-time CBE data &amp; speculative local intelligence (Yellow Pages).</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Export Report</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-shadow shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>Submit Leak</span>
+</button>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">Fear/Greed Index</p>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-black text-slate-900 dark:text-white">42 <span class="text-sm font-normal text-slate-400 ml-1">Fear</span></span>
+<span class="text-red-500 text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">trending_down</span> -5%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-orange-500 h-full w-[42%]"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">USD/EGP Parallel</p>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-black text-slate-900 dark:text-white">48.50</span>
+<span class="text-green-500 text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +1.2%</span>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 uppercase">Official: 30.90 | Spread: 57%</p>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">EGX 30 Sentiment</p>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-black text-green-500">Bullish</span>
+<span class="text-green-500 text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +0.8%</span>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 uppercase">High Liquidity Inflow Observed</p>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">CBE Reserve Cover</p>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-black text-slate-900 dark:text-white">$35.2B</span>
+<span class="text-slate-400 text-xs font-bold">Stable</span>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 uppercase">Next Release: Oct 7</p>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-6">
+<!-- Left Column: Unified Feed -->
+<div class="flex-1 min-w-0">
+<!-- Filters -->
+<div class="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide pb-1">
+<button class="h-9 px-4 rounded-lg bg-primary text-white text-sm font-bold whitespace-nowrap">All Sources</button>
+<button class="h-9 px-4 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap flex items-center gap-2">
+                                    Official <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap flex items-center gap-2">
+                                    Rumors <span class="w-2 h-2 rounded-full bg-accent-yellow"></span>
+</button>
+<div class="h-6 w-px bg-slate-300 dark:bg-slate-700 mx-2"></div>
+<button class="h-9 px-4 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap">FX Rates</button>
+<button class="h-9 px-4 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap">IPOs</button>
+</div>
+<!-- Feed List -->
+<div class="space-y-3">
+<!-- Rumor Item -->
+<div class="group bg-white dark:bg-surface-dark p-4 rounded-xl border-l-4 border-l-accent-yellow border-y border-r border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-accent-yellow/10 text-accent-yellow text-[10px] font-black uppercase tracking-widest">Yellow Pages</span>
+<span class="text-slate-400 text-xs">42 mins ago</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Credibility</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-3 h-1 bg-green-500 rounded-full"></div>
+<div class="w-3 h-1 bg-green-500 rounded-full"></div>
+<div class="w-3 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="w-3 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">New sovereign wealth fund stake sale imminent in the energy sector</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">Sources within the Ministry of Finance suggest a list of three major state-owned energy firms are being prepared for a 20% equity offering specifically targeting Gulf-based institutional investors...</p>
+<div class="flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-500 dark:text-slate-400 font-medium">#Privatization</span>
+<span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-500 dark:text-slate-400 font-medium">#GulfInvestment</span>
+</div>
+<div class="flex items-center gap-4 text-slate-400">
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-sm">comment</span> 24</span>
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-sm">share</span> 12</span>
+</div>
+</div>
+</div>
+<!-- Official Item -->
+<div class="group bg-white dark:bg-surface-dark p-4 rounded-xl border-l-4 border-l-primary border-y border-r border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest">Official CBE</span>
+<span class="text-slate-400 text-xs">2 hours ago</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded bg-green-500/10 text-green-500 text-[10px] font-black uppercase tracking-widest">Verified</span>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">CBE maintains interest rates at current levels in MPC meeting</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">The Monetary Policy Committee (MPC) of the Central Bank of Egypt (CBE) decided to keep the overnight deposit rate, overnight lending rate, and the rate of the main operation unchanged at 19.25 percent, 20.25 percent, and 19.75 percent...</p>
+<div class="flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-500 dark:text-slate-400 font-medium">#InterestRates</span>
+<span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-500 dark:text-slate-400 font-medium">#MonetaryPolicy</span>
+</div>
+<div class="flex items-center gap-4 text-slate-400">
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-sm">comment</span> 8</span>
+<button class="text-primary font-bold text-xs flex items-center gap-1">Read Official PDF <span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</div>
+</div>
+</div>
+<!-- Rumor Item -->
+<div class="group bg-white dark:bg-surface-dark p-4 rounded-xl border-l-4 border-l-accent-yellow border-y border-r border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-accent-yellow/10 text-accent-yellow text-[10px] font-black uppercase tracking-widest">Yellow Pages</span>
+<span class="text-slate-400 text-xs">5 hours ago</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Credibility</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-3 h-1 bg-red-500 rounded-full"></div>
+<div class="w-3 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="w-3 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="w-3 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Talk of potential EGP devaluation before the end of the month</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">Unconfirmed reports from local exchange bureaus suggesting a coordinated move to adjust the official rate to 35-37 EGP range. Note: This contradicts recent CBE forward guidance.</p>
+<div class="flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-500 dark:text-slate-400 font-medium">#FX</span>
+<span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-500 dark:text-slate-400 font-medium">#Devaluation</span>
+</div>
+<div class="flex items-center gap-4 text-slate-400">
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-sm">comment</span> 156</span>
+<span class="px-2 py-0.5 rounded bg-red-500/10 text-red-500 text-[10px] font-bold">Speculative</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Heatmap & Side Widgets -->
+<div class="w-full lg:w-80 flex flex-col gap-6">
+<!-- Market Heatmap Widget -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-between">
+                                    Sector Heatmap
+                                    <span class="text-[10px] font-normal text-slate-400">Live Reaction</span>
+</h3>
+<div class="grid grid-cols-2 gap-2">
+<div class="h-20 bg-green-500/80 rounded-lg p-2 text-white flex flex-col justify-between">
+<span class="text-xs font-bold">Banking</span>
+<span class="text-lg font-black">+2.4%</span>
+</div>
+<div class="h-20 bg-red-500/80 rounded-lg p-2 text-white flex flex-col justify-between">
+<span class="text-xs font-bold">Real Estate</span>
+<span class="text-lg font-black">-1.8%</span>
+</div>
+<div class="h-20 bg-green-500/40 rounded-lg p-2 text-white flex flex-col justify-between border border-green-500/50">
+<span class="text-xs font-bold">Telecom</span>
+<span class="text-lg font-black">+0.5%</span>
+</div>
+<div class="h-20 bg-slate-200 dark:bg-slate-700 rounded-lg p-2 text-slate-500 dark:text-slate-300 flex flex-col justify-between">
+<span class="text-xs font-bold">Retail</span>
+<span class="text-lg font-black">0.0%</span>
+</div>
+</div>
+<button class="w-full mt-4 text-xs font-bold text-primary hover:underline">View Full Heatmap</button>
+</div>
+<!-- Trending Rumors Sidebar -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white mb-4">Trending Signals</h3>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="text-primary font-black text-xl italic opacity-50">01</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-slate-100">Bread Subsidy Restructuring</p>
+<p class="text-[10px] text-slate-400">Sector: Consumer Goods | Sentiment: Volatile</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="text-primary font-black text-xl italic opacity-50">02</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-slate-100">Telecom Egypt Stake Buyback</p>
+<p class="text-[10px] text-slate-400">Sector: Telecom | Sentiment: Bullish</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="text-primary font-black text-xl italic opacity-50">03</div>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-slate-100">Fuel Price Adjustment Rumors</p>
+<p class="text-[10px] text-slate-400">Sector: Macro | Sentiment: Bearish</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Macro Brief -->
+<div class="bg-slate-900 p-4 rounded-xl text-white">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary">Global Macro</h3>
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-400">Brent Crude</span>
+<span class="text-sm font-bold">$92.14 <span class="text-red-400 text-[10px]">-0.4%</span></span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-400">Gold (24K EGP)</span>
+<span class="text-sm font-bold">2,450 <span class="text-green-400 text-[10px]">+1.2%</span></span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-400">US 10Y Yield</span>
+<span class="text-sm font-bold">4.62% <span class="text-slate-400 text-[10px]">0.0%</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer / Ticker Bar -->
+<footer class="h-10 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 flex items-center px-6 gap-6 overflow-hidden">
+<div class="flex items-center gap-2 whitespace-nowrap bg-primary/10 px-2 py-0.5 rounded text-primary text-[10px] font-bold">
+<span class="material-symbols-outlined text-xs">analytics</span> LIVE TICKER
+            </div>
+<div class="flex gap-8 animate-marquee whitespace-nowrap text-[11px] font-medium text-slate-500 dark:text-slate-400">
+<span>EGX30: 24,152.4 (-0.32%)</span>
+<span>COMY: 67.40 (+1.2%)</span>
+<span>EAST: 22.10 (-0.45%)</span>
+<span>FWRY: 5.62 (+0.82%)</span>
+<span>ORAS: 145.20 (+2.14%)</span>
+<span>EKHO: 1.14 (0.00%)</span>
+<span>SWDY: 24.10 (-1.22%)</span>
+<span>ABUK: 78.40 (+0.34%)</span>
+</div>
+</footer>
+</div>
+</body></html>
