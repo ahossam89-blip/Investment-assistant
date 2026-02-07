@@ -1,0 +1,8 @@
+{
+  "name": "investment-assistant",
+  "version": "1.0.0",
+  "description": "Static deployment placeholder to satisfy Vercel build",
+  "scripts": {
+    "start": "echo no start command"
+  }
+}
